@@ -229,8 +229,8 @@ sudo raspi-config
 ### Step 4: Create Project Directory
 
 ```bash
-mkdir -p ~/irrigation_project
-cd ~/irrigation_project
+mkdir -p ~/Automatic_Irrigation_Control_through_Embedded_Vision
+cd ~/Automatic_Irrigation_Control_through_Embedded_Vision
 ```
 
 ### Step 5: Install Python Dependencies
@@ -350,7 +350,7 @@ Weighted P/R/F1: 0.9210 / 0.9235 / 0.9222
 After training, copy the model to Raspberry Pi:
 
 ```bash
-scp best_soil_model.pth pi@<pi-ip>:~/irrigation_project/
+scp best_soil_model.pth pi@<pi-ip>:~/Automatic_Irrigation_Control_through_Embedded_Vision/
 ```
 
 ---
@@ -362,7 +362,7 @@ scp best_soil_model.pth pi@<pi-ip>:~/irrigation_project/
 Place the `irrigate.py` script in your project directory:
 
 ```bash
-cp irrigate.py ~/irrigation_project/
+cp irrigate.py ~/Automatic_Irrigation_Control_through_Embedded_Vision/
 ```
 
 ### Step 2: Hardware Wiring
@@ -387,7 +387,7 @@ cp irrigate.py ~/irrigation_project/
 ### Step 3: Test Deployment Script
 
 ```bash
-cd ~/irrigation_project
+cd ~/Automatic_Irrigation_Control_through_Embedded_Vision
 python3 irrigate.py
 ```
 
@@ -441,8 +441,8 @@ After=network.target
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/home/pi/irrigation_project
-ExecStart=/usr/bin/python3 /home/pi/irrigation_project/irrigate.py
+WorkingDirectory=/home/pi/Automatic_Irrigation_Control_through_Embedded_Vision
+ExecStart=/usr/bin/python3 /home/pi/Automatic_Irrigation_Control_through_Embedded_Vision/irrigate.py
 Restart=always
 RestartSec=10
 StandardOutput=journal
@@ -509,7 +509,7 @@ If you prefer cron (simpler but less robust):
 crontab -e
 
 # Add this line to run at boot (after 60 seconds to allow system startup):
-@reboot sleep 60 && /usr/bin/python3 /home/pi/irrigation_project/irrigate.py > /home/pi/irrigation_project/irrigate.log 2>&1 &
+@reboot sleep 60 && /usr/bin/python3 /home/pi/Automatic_Irrigation_Control_through_Embedded_Vision/irrigate.py > /home/pi/Automatic_Irrigation_Control_through_Embedded_Vision/irrigate.log 2>&1 &
 ```
 
 **Drawbacks of crontab for this use case:**
@@ -527,7 +527,7 @@ sudo nano /etc/rc.local
 
 Add before `exit 0`:
 ```bash
-/usr/bin/python3 /home/pi/irrigation_project/irrigate.py &
+/usr/bin/python3 /home/pi/Automatic_Irrigation_Control_through_Embedded_Vision/irrigate.py &
 ```
 
 ---
@@ -551,7 +551,7 @@ Add before `exit 0`:
 
 **Manual Start:**
 ```bash
-cd ~/irrigation_project
+cd ~/Automatic_Irrigation_Control_through_Embedded_Vision
 python3 irrigate.py
 ```
 
@@ -690,7 +690,7 @@ device = torch.device('cpu')  # Force CPU inference on Pi
 ls -lh best_soil_model.pth
 
 # Re-copy model if corrupted:
-scp best_soil_model.pth pi@<pi-ip>:~/irrigation_project/
+scp best_soil_model.pth pi@<pi-ip>:~/Automatic_Irrigation_Control_through_Embedded_Vision/
 ```
 
 ### High CPU/Memory Usage
@@ -725,7 +725,7 @@ systemd-analyze verify irrigation.service
 
 # Ensure absolute paths in service file:
 # ✗ Wrong: ExecStart=/home/pi/irrigate.py
-# ✓ Correct: ExecStart=/usr/bin/python3 /home/pi/irrigation_project/irrigate.py
+# ✓ Correct: ExecStart=/usr/bin/python3 /home/pi/Automatic_Irrigation_Control_through_Embedded_Vision/irrigate.py
 
 # Check file permissions:
 sudo chmod 644 /etc/systemd/system/irrigation.service
@@ -844,7 +844,7 @@ Based on the training configuration provided:
 ## Project Structure
 
 ```
-irrigation_project/
+Automatic_Irrigation_Control_through_Embedded_Vision/
 ├── README.md                    # This file
 ├── irrigate.py                  # Main deployment script (runs on Pi)
 ├── EfficientNet.py              # Model training script (runs on GPU machine)
@@ -854,13 +854,11 @@ irrigation_project/
 │   ├── train/
 │   ├── val/
 │   └── test/
-├── logs/                        # System logs
 ├── configs/                     # Configuration files
-│   └── irrigation_service       # systemd service file
+│   └── irrigation.service       # systemd service file
 └── docs/                        # Documentation
-    ├── INSTALLATION.md
-    ├── TROUBLESHOOTING.md
-    └── API.md
+    ├── FlowChart.jpeg
+    └── Interface.jpeg
 ```
 
 ---

@@ -1,0 +1,16 @@
+[Unit]
+Description=Automatic Irrigation Control via Embedded Vision
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/irrigation_project
+ExecStart=/usr/bin/python3 /home/pi/Automatic_Irrigation_Control_through_Embedded_Vision/irrigate.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
