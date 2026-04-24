@@ -44,20 +44,20 @@ Traditional irrigation systems are either manually operated or based on simple t
 
 ## Key Features
 
-✅ **Real-time soil moisture classification** using EfficientNetV2-L (4-class classification)  
-✅ **Majority voting mechanism** (5 consecutive image captures) for robust predictions  
-✅ **Adaptive pump control** with variable irrigation durations:
+**Real-time soil moisture classification** using EfficientNetV2-L (4-class classification)  
+**Majority voting mechanism** (5 consecutive image captures) for robust predictions  
+**Adaptive pump control** with variable irrigation durations:
    - Dry soil: 10 seconds of irrigation
    - Low moisture: 5 seconds of irrigation
    - Medium/High moisture: No irrigation
    
-✅ **I2C LCD Display** showing real-time classification results and system status  
-✅ **Dual RGB LED indicators** for visual feedback (Green = Irrigating, Red = Standby)  
-✅ **Relay-based pump control** for high-voltage/high-current pump systems  
-✅ **GPIO-based control** for flexible hardware integration  
-✅ **Error handling & graceful shutdown** with proper resource cleanup  
-✅ **Configurable cycle time** (default: 20-second intervals between analyses)  
-✅ **Cross-platform model deployment** (trained on GPU, infers on Raspberry Pi)  
+**I2C LCD Display** showing real-time classification results and system status  
+**Dual RGB LED indicators** for visual feedback (Green = Irrigating, Red = Standby)  
+**Relay-based pump control** for high-voltage/high-current pump systems  
+**GPIO-based control** for flexible hardware integration  
+**Error handling & graceful shutdown** with proper resource cleanup  
+**Configurable cycle time** (default: 20-second intervals between analyses)  
+**Cross-platform model deployment** (trained on GPU, infers on Raspberry Pi)  
 
 ---
 
@@ -86,10 +86,10 @@ Traditional irrigation systems are either manually operated or based on simple t
     │        │         │         │      │           │
     └────────┘         └─────────┘      └─────┬─────┘
                                               │
-                                         ┌────▼──────────────┐
-                                         │ Irrigation Pump   │
-                                         │ (via Power Relay) │
-                                         └───────────────────┘
+                                    ┌─────────▼─────────┐
+                                    │ Irrigation Pump   │
+                                    │ (via Power Relay) │
+                                    └───────────────────┘
 ```
 
 ### Software Architecture
