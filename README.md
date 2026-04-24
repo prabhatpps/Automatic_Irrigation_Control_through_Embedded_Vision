@@ -80,11 +80,11 @@ Traditional irrigation systems are either manually operated or based on simple t
 └─────────┼─────────────────┼─────────────────┼───────────────┘
           │                 │                 │
           │                 │                 │
-    ┌─────▼──┐         ┌────▼────┐      ┌─────▼─────┐
-    │Camera  │         │  16x2   │      │ 3V Relay  │
-    │5MP     │         │  LCD    │      │ Module    │
-    │        │         │         │      │           │
-    └────────┘         └─────────┘      └─────┬─────┘
+     ┌────▼───┐        ┌────▼────┐      ┌─────▼─────┐
+     │Camera  │        │  16x2   │      │ 3V Relay  │
+     │5MP     │        │  LCD    │      │ Module    │
+     │        │        │         │      │           │
+     └────────┘        └─────────┘      └─────┬─────┘
                                               │
                                     ┌─────────▼─────────┐
                                     │ Irrigation Pump   │
