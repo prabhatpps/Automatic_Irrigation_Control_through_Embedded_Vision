@@ -64,36 +64,10 @@ Traditional irrigation systems are either manually operated or based on simple t
 ## System Architecture
 
 ### Hardware Block Diagram
+![Interface](docs/Interface.jpeg)
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Raspberry Pi 5                           │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
-│  │   Camera     │  │  I2C LCD     │  │  GPIO Pins   │       │
-│  │   Module     │  │  Display     │  │  (17,22,27)  │       │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘       │
-│         │                 │                 │               │
-│  GPIO:  │             I2C:│            GPIO:|               │
-│  CAM/   │           SDA:2 │         17-Pump |               │
-│  DISP0  │           SCL:3 │          22-LED |               │
-│         │                 │          27-LED |               │
-└─────────┼─────────────────┼─────────────────┼───────────────┘
-          │                 │                 │
-          │                 │                 │
-     ┌────▼───┐        ┌────▼────┐      ┌─────▼─────┐
-     │Camera  │        │  16x2   │      │ 3V Relay  │
-     │5MP     │        │  LCD    │      │ Module    │
-     │        │        │         │      │           │
-     └────────┘        └─────────┘      └─────┬─────┘
-                                              │
-                                    ┌─────────▼─────────┐
-                                    │ Irrigation Pump   │
-                                    │ (via Power Relay) │
-                                    └───────────────────┘
-```
 
 ### Software Architecture
-
 ```
 Input: Soil Image
          ↓
